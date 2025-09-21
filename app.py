@@ -16,7 +16,7 @@ from sklearn.model_selection import train_test_split
 # -------------------------------
 @st.cache_resource
 def load_data():
-    df = pd.read_csv('/kaggle/input/chronic-kidney-disease/new_model.csv')
+    df = pd.read_csv('/kaggle/input/chronic-kidney-disease')
     df.replace('?', np.nan, inplace=True)
 
     # Convert numerical columns
