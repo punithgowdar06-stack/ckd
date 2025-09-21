@@ -16,22 +16,23 @@ from sklearn.model_selection import train_test_split
 # -------------------------------
 @st.cache_resource
 def load_data():
-    df = pd.read_csv("Chronic_Kidney_Disease.csv")
+    df = pd.read_csv("/kaggle/input/chronic-kidney-disease/new_model.csv
+")
     df.replace('?', np.nan, inplace=True)
 
     # Convert numerical columns
-    num_cols = ['age','bp','sg','al','su','bgr','bu','sc','sod','pot','hemo','pcv','wc','rc']
+    num_cols = ['Bp','Sg','Al','Su','Rbc','Bu','Sc','Sod','Pot','Hemo','Wbcc','Htn','Rbcc']
     for col in num_cols:
         df[col] = pd.to_numeric(df[col], errors='coerce')
 
     df.fillna(df.mean(), inplace=True)
 
-    cat_cols = ['rbc','pc','pcc','ba','htn','dm','cad','appet','pe','ane','class']
+    cat_cols = ['Rbc','Pot','Rbcc','Bu','Htn','Class']
     for col in cat_cols:
         df[col] = LabelEncoder().fit_transform(df[col].astype(str))
 
-    X = df.drop('class', axis=1)
-    y = df['class']
+    X = df.drop('Class', axis=1)
+    y = df['Class']
 
     return X, y
 
