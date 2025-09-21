@@ -16,7 +16,7 @@ from sklearn.model_selection import train_test_split
 # -------------------------------
 @st.cache_resource
 def load_data():
-    df = pd.read_csv('C:\Users\adina\Downloads\archive.zip')
+    df = pd.read_csv("C:\Users\adina\Downloads\archive.zip")
     df.replace('?', np.nan, inplace=True)
 
     # Convert numerical columns
